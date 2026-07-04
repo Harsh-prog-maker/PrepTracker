@@ -1,0 +1,37 @@
+[
+  {
+    "title": "Two Sum",
+    "platform": "LeetCode",
+    "difficulty": "Easy",
+    "topic": "Array",
+    "url": "https://leetcode.com/problems/two-sum/"
+  },
+  {
+    "title": "Valid Parentheses",
+    "platform": "LeetCode",
+    "difficulty": "Easy",
+    "topic": "Stack",
+    "url": "https://leetcode.com/problems/valid-parentheses/"
+  },
+  {
+    "title": "Merge Intervals",
+    "platform": "LeetCode",
+    "difficulty": "Medium",
+    "topic": "Intervals",
+    "url": "https://leetcode.com/problems/merge-intervals/"
+  },
+  {
+    "title": "Word Ladder",
+    "platform": "LeetCode",
+    "difficulty": "Hard",
+    "topic": "Graph",
+    "url": "https://leetcode.com/problems/word-ladder/"
+  },
+  {
+    "title": "Binary Tree Level Order Traversal",
+    "platform": "LeetCode",
+    "difficulty": "Medium",
+    "topic": "Tree",
+    "url": "https://leetcode.com/problems/binary-tree-level-order-traversal/"
+  }
+]

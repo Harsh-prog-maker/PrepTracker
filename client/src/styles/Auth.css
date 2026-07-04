@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+.auth-container {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background:
+    linear-gradient(
+      rgba(15, 23, 42, 0.50),
+      rgba(15, 23, 42, 0.50)
+    ),
+    url("../assets/auth-bg.png");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  padding: 20px;
+}
+
+.auth-card {
+  width: 400px;
+  background: rgba(255, 255, 255, 0.96);
+
+  backdrop-filter: blur(10px);
+
+  border-radius: 18px;
+
+  padding: 40px;
+
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.30);
+
+  animation: fadeUp .55s ease;
+}
+
+.auth-title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  color: #1e293b;
+
+  margin-bottom: 8px;
+}
+
+.auth-subtitle {
+  text-align: center;
+  color: #64748b;
+  line-height: 1.5;
+
+  margin-bottom: 30px;
+}
+
+.auth-input {
+  width: 100%;
+
+  padding: 13px 15px;
+
+  margin-bottom: 18px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+
+  font-size: 15px;
+
+  transition: .2s;
+
+  box-sizing: border-box;
+}
+
+.auth-input:focus {
+  outline: none;
+
+  border-color: #2563eb;
+
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, .15);
+}
+
+.auth-btn {
+  width: 100%;
+
+  padding: 13px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #2563eb;
+
+  color: white;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: .25s;
+}
+
+.auth-btn:hover {
+  background: #1d4ed8;
+
+  transform: translateY(-2px);
+}
+
+.auth-btn:active {
+  transform: scale(.98);
+}
+
+.auth-footer {
+  margin-top: 22px;
+
+  text-align: center;
+
+  color: #64748b;
+}
+
+.auth-link {
+  color: #2563eb;
+
+  text-decoration: none;
+
+  font-weight: 600;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
+
+@keyframes fadeUp {
+
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+.auth-logo {
+  width: 70px;
+  display: block;
+  margin: 0 auto 15px;
+  border-radius: 18px;
+  border-color: #000;
+}

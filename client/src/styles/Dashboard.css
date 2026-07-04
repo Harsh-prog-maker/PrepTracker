@@ -1,0 +1,194 @@
+.dashboard-container {
+  padding: 30px;
+  background-color: #f5f7fb;
+  min-height: 100vh;
+}
+
+.dashboard-title {
+  margin-bottom: 30px;
+}
+
+.dashboard-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  margin-bottom: 30px;
+}
+
+.stats-container {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  width: 130px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.stat-card h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.stat-card p {
+  margin-top: 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.chart-container {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+/* ---------- Problem Selector ---------- */
+
+.problem-selector {
+  margin: 30px 0;
+}
+
+.problem-actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.add-btn {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.add-btn:hover {
+  background-color: #1d4ed8;
+}
+
+.add-btn:active {
+  transform: scale(0.98);
+}
+
+/* ---------- Divider ---------- */
+
+.dashboard-divider {
+  margin: 35px 0;
+  border: none;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* ---------- React Select ---------- */
+
+.react-select-container {
+  flex: 1;
+}
+
+.react-select__control {
+  min-height: 45px !important;
+  border-radius: 8px !important;
+  border-color: #d1d5db !important;
+  box-shadow: none !important;
+}
+
+.react-select__control:hover {
+  border-color: #2563eb !important;
+}
+
+.react-select__menu {
+  border-radius: 8px;
+}
+
+.react-select__option--is-focused {
+  background: #eff6ff !important;
+}
+
+.react-select__option--is-selected {
+  background: #2563eb !important;
+}
+/* .dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 35px;
+  
+} */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  margin-bottom: 30px;
+
+  background: #d8e5f5;
+  padding: 25px 30px;
+
+  border-radius: 14px;
+
+  border: 1px solid #5c82ad;
+}
+.dashboard-heading h1 {
+  margin: 0;
+  font-size: 34px;
+  color: #1e293b;
+}
+
+.dashboard-heading p:first-of-type {
+  margin-top: 10px;
+  margin-bottom: 4px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.dashboard-heading p:last-of-type {
+  margin: 0;
+  color: #64748b;
+}
+
+.logout-btn {
+  background: #dc2626;
+  color: white;
+
+  border: none;
+
+  border-radius: 10px;
+
+  padding: 12px 22px;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all .25s ease;
+}
+
+.logout-btn:hover {
+  background: #b91c1c;
+  transform: translateY(-2px);
+}
+
+.logout-btn:active {
+  transform: scale(.98);
+}
+.loading-screen {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  font-weight: 600;
+  color: #374151;
+}
