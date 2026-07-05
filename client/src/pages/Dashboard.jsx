@@ -3,6 +3,7 @@ import API from "../api/axios";
 import { PieChart, Pie, Cell, Tooltip } from "recharts";
 import ProblemSelector from "../components/ProblemSelector";
 import ActivityList from "../components/ActivityList";
+import TopicProgress from "../components/TopicProgress";
 import logo from "../assets/logo.svg";
 import "../styles/Dashboard.css";
 
@@ -147,6 +148,10 @@ if (loading) {
         <p>{stats.hard}</p>
       </div>
     </div>
+    <TopicProgress
+  problems={problems}
+  activities={activities}
+/>
   </div>
 <div className="chart-container">
   <h3 style={{ textAlign: "center" }}>Difficulty Breakdown</h3>
@@ -175,8 +180,11 @@ if (loading) {
 
       <hr className="dashboard-divider" />
 
-      <ActivityList activities={activities} />
-    </div>
+<ActivityList
+  activities={activities}
+  fetchActivities={fetchActivities}
+  fetchStats={fetchStats}
+/>    </div>
   );
 }
 

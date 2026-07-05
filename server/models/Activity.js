@@ -7,14 +7,39 @@ const activitySchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
+
     problem: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Problem",
       required: true,
     },
+
     solvedAt: {
       type: Date,
       default: Date.now,
+    },
+
+    isFavorite: {
+      type: Boolean,
+      default: false,
+    },
+
+    label: {
+      type: String,
+      enum: [
+        "",
+        "Need Revision",
+        "Marked for Review",
+        "Revised",
+        "Interview Ready",
+      ],
+      default: "",
+    },
+
+    note: {
+      type: String,
+      maxlength: 250,
+      default: "",
     },
   },
   {

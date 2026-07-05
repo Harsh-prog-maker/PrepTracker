@@ -10,7 +10,7 @@
   background: white;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
-  padding: 18px;
+  padding: 14px 25px;
   margin-bottom: 15px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
@@ -21,7 +21,7 @@
 
 .activity-meta {
   color: #555;
-  margin-top: 8px;
+  margin-top: 6px;
 }
 
 .activity-topic {
@@ -122,4 +122,71 @@
   max-width: 400px;
   margin: auto;
   line-height: 1.6;
+}
+.activity-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.activity-header h3 {
+  margin: 0;
+}
+
+.activity-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.favorite-btn {
+  padding: 10px 16px;
+  min-width: 135px;
+  height: 42px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #eef6ff;
+  color: #2563eb;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all .2s ease;
+}
+
+.favorite-btn:hover {
+  background: #dbeafe;
+}
+
+.favorite-btn.favorited {
+  background: #ffe5e5;
+  color: #dc2626;
+}
+
+.delete-activity-btn {
+  padding: 10px 18px;
+  min-width: 90px;
+  height: 42px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #ef4444;
+  color: white;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all .2s ease;
+}
+
+.delete-activity-btn:hover {
+  background: #dc2626;
 }

@@ -83,4 +83,109 @@ const getStats = async (req, res) => {
   }
 };
 
-module.exports = { addActivity, getActivities, getStats };
+//TO ADD FAVOURITES
+const toggleFavorite = async (req, res) => {
+  try {
+    const { activityId } = req.params;
+
+    const activity = await Activity.findOne({
+      _id: activityId,
+      user: req.user._id,
+    });
+
+    if (!activity) {
+      return res.status(404).json({
+        message: "Activity not found",
+      });
+    }
+
+    activity.isFavorite = !activity.isFavorite;
+
+    await activity.save();
+
+    res.status(200).json({
+      message: "Favorite updated",
+      activity,
+    });
+
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      message: "Server Error",
+    });
+  }
+};
+
+//TO DELETE ANY ACTIVITY
+const deleteActivity = async (req, res) => {
+  try {
+
+    const { activityId } = req.params;
+
+    const activity = await Activity.findOne({
+      _id: activityId,
+      user: req.user._id,
+    });
+
+    if (!activity) {
+      return res.status(404).json({
+        message: "Activity not found",
+      });
+    }
+
+    await activity.deleteOne();
+
+    res.status(200).json({
+      message: "Activity deleted successfully",
+    });
+
+  } catch (error) {
+
+    console.error(error);
+
+    res.status(500).json({
+      message: "Server Error",
+    });
+
+  }
+};
+
+// UPDATE LABEL & NOTE
+const updateActivityLabel = async (req, res) => {
+  try {
+    const { activityId } = req.params;
+    const { label, note } = req.body;
+
+    const activity = await Activity.findOne({
+      _id: activityId,
+      user: req.user._id,
+    });
+
+    if (!activity) {
+      return res.status(404).json({
+        message: "Activity not found",
+      });
+    }
+
+    activity.label = label;
+    activity.note = note;
+
+    await activity.save();
+
+    res.status(200).json({
+      message: "Label updated successfully",
+      activity,
+    });
+
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      message: "Server Error",
+    });
+  }
+};
+
+module.exports = { addActivity, getActivities, getStats, updateActivityLabel, toggleFavorite,
+  deleteActivity,};
