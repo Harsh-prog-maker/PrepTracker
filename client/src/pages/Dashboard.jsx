@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import API from "../api/axios";
-import { PieChart, Pie, Cell, Tooltip } from "recharts";
+import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer,} from "recharts";
 import ProblemSelector from "../components/ProblemSelector";
 import ActivityList from "../components/ActivityList";
 import TopicProgress from "../components/TopicProgress";
@@ -10,12 +10,22 @@ import "../styles/Dashboard.css";
 function Dashboard() {
   const [problems, setProblems] = useState([]);
   const [activities, setActivities] = useState([]);
+ 
   const [stats, setStats] = useState({
   totalSolved: 0,
   easy: 0,
   medium: 0,
   hard: 0,
 });
+
+const [streak, setStreak] = useState({
+  currentStreak: 0,
+  lastStreak: 0,
+  bestStreak: 0,
+  showLastStreak: false,
+  message: "",
+});
+
 const [loading, setLoading] = useState(true);
 const [user, setUser] = useState(null);
 const fetchUser = async () => {
@@ -38,11 +48,12 @@ useEffect(() => {
     setLoading(true);
 
     await Promise.all([
-      fetchProblems(),
-      fetchActivities(),
-      fetchStats(),
-      fetchUser(),
-    ]);
+  fetchProblems(),
+  fetchActivities(),
+  fetchStats(),
+  fetchStreak(),
+  fetchUser(),
+]);
 
     setLoading(false);
   }
@@ -77,6 +88,15 @@ useEffect(() => {
   }
 };
 
+const fetchStreak = async () => {
+  try {
+    const res = await API.get("/activity/streak");
+    setStreak(res.data);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const handleLogout = () => {
   localStorage.removeItem("token");
   window.location.href = "/";
@@ -88,6 +108,7 @@ if (loading) {
     </div>
   );
 }
+
   return (
     <div className="dashboard-container">
   <div className="dashboard-header">
@@ -126,8 +147,8 @@ if (loading) {
 </div>
   {/* STATS CARDS */}
 <div className="dashboard-top">
-  <div>
-<div className="stats-container">
+<div className="dashboard-left">
+  <div className="stats-container">
       <div className="stat-card">
         <h3>Total</h3>
         <p>{stats.totalSolved}</p>
@@ -154,29 +175,63 @@ if (loading) {
 />
   </div>
 <div className="chart-container">
-  <h3 style={{ textAlign: "center" }}>Difficulty Breakdown</h3>
-    <PieChart width={300} height={300}>
-      <Pie
-        data={chartData}
-        dataKey="value"
-        nameKey="name"
-        outerRadius={100}
-        label
-      >
-        {chartData.map((entry, index) => (
-          <Cell key={index} fill={COLORS[index]} />
-        ))}
-      </Pie>
+  <h3 className="insights-title">📊 Insights</h3>
 
-      <Tooltip />
-    </PieChart>
+  <div className="pie-wrapper">
+    <ResponsiveContainer width="100%" aspect={1}>
+      <PieChart margin={{ top: 10, right: 40, bottom: 10, left: 40 }}>
+        <Pie
+          data={chartData}
+          dataKey="value"
+          nameKey="name"
+          cx="50%"
+          cy="50%"
+          /* Reduced outerRadius slightly from 75% to 65% to give labels more room */
+          outerRadius="65%"
+          innerRadius="0%" 
+          label
+        >
+          {chartData.map((entry, index) => (
+            <Cell key={index} fill={COLORS[index]} />
+          ))}
+        </Pie>
+        <Tooltip />
+      </PieChart>
+    </ResponsiveContainer>
+  </div>
+
+  <div className="streak-section">
+    <div className="streak-row">
+      <span className="streak-label">
+        🔥 {streak.showLastStreak ? "Last Streak" : "Current Streak"}
+      </span>
+
+      <span className="streak-value">
+        {streak.showLastStreak
+          ? streak.lastStreak
+          : streak.currentStreak}{" "}
+        Days
+      </span>
+    </div>
+
+    <div className="streak-row">
+      <span className="streak-label">
+        🏆 Best Streak
+      </span>
+
+      <span className="streak-value">
+        {streak.bestStreak} Days
+      </span>
+    </div>
   </div>
 </div>
+</div>
       <ProblemSelector
-        problems={problems}
-        fetchActivities={fetchActivities}
-        fetchStats={fetchStats}
-      />
+    problems={problems}
+    fetchActivities={fetchActivities}
+    fetchStats={fetchStats}
+    fetchStreak={fetchStreak}
+/>
 
       <hr className="dashboard-divider" />
 
@@ -184,8 +239,8 @@ if (loading) {
   activities={activities}
   fetchActivities={fetchActivities}
   fetchStats={fetchStats}
+  fetchStreak={fetchStreak}
 />    </div>
   );
 }
-
 export default Dashboard;

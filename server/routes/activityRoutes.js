@@ -5,6 +5,7 @@ const {
   addActivity,
   getActivities,
   getStats,
+  getStreakStats,
   updateActivityLabel,
   toggleFavorite,
   deleteActivity,
@@ -17,6 +18,8 @@ router.post("/", protect, addActivity);
 router.get("/", protect, getActivities);
 
 router.get("/stats", protect, getStats);
+
+router.get("/streak", protect, getStreakStats);
 
 // UPDATE LABEL
 router.put("/:activityId/label", protect, updateActivityLabel);

@@ -10,12 +10,15 @@
 
 .dashboard-top {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
   gap: 40px;
   margin-bottom: 30px;
+  align-items: stretch;
+  flex-wrap:wrap;
 }
-
+.dashboard-left {
+  flex: 2;
+  min-width: 0;
+}
 .stats-container {
   display: flex;
   gap: 15px;
@@ -26,7 +29,7 @@
   background: white;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
-  width: 130px;
+flex: 1 1 110px;
   padding: 20px;
   text-align: center;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -42,12 +45,29 @@
   font-size: 24px;
   font-weight: bold;
 }
-
 .chart-container {
-  background: white;
-  padding: 20px;
+  flex: 1;
+  min-width: 0;
+
+  background: #fff;
+  border: 1px solid #e5e7eb;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+.pie-wrapper{
+    width:100%;
+    max-width:320px;
+    aspect-ratio:1;
+    margin:0 auto;
+    display: flex;
+  justify-content: center;
+  align-items: center;
 }
 /* ---------- Problem Selector ---------- */
 
@@ -117,13 +137,6 @@
 .react-select__option--is-selected {
   background: #2563eb !important;
 }
-/* .dashboard-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 35px;
-  
-} */
 .dashboard-header {
   display: flex;
   justify-content: space-between;
@@ -191,4 +204,142 @@
   font-size: 22px;
   font-weight: 600;
   color: #374151;
+}
+.insights-title {
+  text-align: center;
+  margin-bottom: 12px;
+  color: #111827;
+}
+.streak-section {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #e5e7eb;
+  width: 100%;
+}
+.streak-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 8px 0;
+}
+.streak-label {
+  font-weight: 600;
+  color: #374151;
+  font-size: 15px;
+}
+.streak-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* ===========================
+   Responsive - Tablet
+=========================== */
+
+@media (max-width: 900px) {
+
+  .dashboard-top {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .dashboard-left,
+  .chart-container {
+    width: 100%;
+    /* flex: none; */
+  }
+
+  .stats-container {
+    justify-content: center;
+  }
+
+  .chart-container {
+    align-self: stretch;
+  }
+
+  .pie-wrapper {
+    max-width: 300px;
+  }
+}
+
+/* ===========================
+   Responsive - Mobile
+=========================== */
+
+@media (max-width: 768px) {
+
+  .dashboard-container {
+    padding: 20px;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .logout-btn {
+    align-self: flex-end;
+  }
+
+  .stats-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .stat-card {
+    width: auto;
+  }
+
+  .chart-container {
+    width: 100%;
+  }
+
+  .pie-wrapper {
+  max-width: 260px;
+  /* height: 200px; */
+}
+
+}
+/* ===========================
+   Responsive - Small Phones
+=========================== */
+
+@media (max-width: 480px) {
+
+  .dashboard-container {
+    padding: 15px;
+  }
+
+  .dashboard-title {
+    font-size: 28px;
+  }
+
+  .dashboard-subtitle {
+    font-size: 15px;
+  }
+
+  .welcome-text {
+    font-size: 16px;
+  }
+
+  .logout-btn {
+    width: 100%;
+  }
+
+  .stats-container {
+    grid-template-columns: 1fr;
+  }
+  .pie-wrapper {
+  max-width: 220px;
+  /* height: 170px; */
+}
+
+.chart-container{
+    padding:15px 10px;
+}
+
 }

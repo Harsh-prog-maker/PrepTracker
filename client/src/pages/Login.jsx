@@ -11,7 +11,8 @@ export default function Login() {
 
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
+const handleLogin = async (e) => {
+  e.preventDefault();
     try {
       const res = await API.post("/users/login", {
         email,
@@ -33,34 +34,38 @@ export default function Login() {
 
       <div className="auth-card">
 <img src={logo} alt="PrepTracker" className="auth-logo" />
-        <h1 className="auth-title">PrepTracker</h1>
+        <form onSubmit={handleLogin}>
 
-<p className="auth-subtitle">
-  Track your coding journey.
-</p>
-        <input
-          className="auth-input"
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+  <h1 className="auth-title">PrepTracker</h1>
 
-        <input
-          className="auth-input"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+  <p className="auth-subtitle">
+    Track your coding journey.
+  </p>
 
-        <button
-          className="auth-btn"
-          onClick={handleLogin}
-        >
-          Login
-        </button>
+  <input
+    className="auth-input"
+    type="email"
+    placeholder="Email"
+    value={email}
+    onChange={(e) => setEmail(e.target.value)}
+  />
 
+  <input
+    className="auth-input"
+    type="password"
+    placeholder="Password"
+    value={password}
+    onChange={(e) => setPassword(e.target.value)}
+  />
+
+  <button
+    type="submit"
+    className="auth-btn"
+  >
+    Login
+  </button>
+
+</form>
         <div className="auth-footer">
           Don't have an account?{" "}
           <Link className="auth-link" to="/register">

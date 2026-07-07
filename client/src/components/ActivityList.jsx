@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import ConfirmModal from "./ConfirmModal";
 import LabelModal from "./LabelModal";
 import "../styles/ActivityList.css";
-function ActivityList({ activities, fetchActivities, fetchStats }) {
+function ActivityList({ activities, fetchActivities, fetchStats, fetchStreak, }) {
   const [currentPage, setCurrentPage] = useState(1);
 
   const [isLabelModalOpen, setIsLabelModalOpen] = useState(false);
@@ -41,6 +41,7 @@ const handleDeleteActivity = async () => {
 
     await fetchActivities();
     await fetchStats();
+    await fetchStreak();
 
     setIsDeleteModalOpen(false);
     setActivityToDelete(null);
@@ -59,6 +60,7 @@ const handleDeleteActivity = async () => {
 
       await fetchActivities();
       await fetchStats();
+      await fetchStreak();
 
       toast.success("Favorite updated!");
     } catch (err) {

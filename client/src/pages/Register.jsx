@@ -12,7 +12,8 @@ export default function Register() {
 
   const navigate = useNavigate();
 
-  const handleRegister = async () => {
+  const handleRegister = async (e) => {
+    e.preventDefault();
     try {
       await API.post("/users/register", {
         name,
@@ -34,53 +35,54 @@ export default function Register() {
     <div className="auth-container">
 
       <div className="auth-card">
-<img src={logo} alt="PrepTracker" className="auth-logo" />
-        <h1 className="auth-title">PrepTracker</h1>
+  <img src={logo} alt="PrepTracker" className="auth-logo" />
 
-        <p className="auth-subtitle">
-          Your personal coding progress dashboard.
-        </p>
+  <form onSubmit={handleRegister}>
+    <h1 className="auth-title">PrepTracker</h1>
 
-        <input
-          className="auth-input"
-          type="text"
-          placeholder="Full Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
+    <p className="auth-subtitle">
+      Your personal coding progress dashboard.
+    </p>
 
-        <input
-          className="auth-input"
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+    <input
+      className="auth-input"
+      type="text"
+      placeholder="Full Name"
+      value={name}
+      onChange={(e) => setName(e.target.value)}
+    />
 
-        <input
-          className="auth-input"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+    <input
+      className="auth-input"
+      type="email"
+      placeholder="Email"
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
+    />
 
-        <button
-          className="auth-btn"
-          onClick={handleRegister}
-        >
-          Create Account
-        </button>
+    <input
+      className="auth-input"
+      type="password"
+      placeholder="Password"
+      value={password}
+      onChange={(e) => setPassword(e.target.value)}
+    />
 
-        <div className="auth-footer">
-          Already have an account?{" "}
-          <Link className="auth-link" to="/">
-            Login
-          </Link>
-        </div>
+    <button
+      className="auth-btn"
+      type="submit"
+    >
+      Create Account
+    </button>
+  </form>
 
-      </div>
-
+  <div className="auth-footer">
+    Already have an account?{" "}
+    <Link className="auth-link" to="/">
+      Login
+    </Link>
+  </div>
+</div>
     </div>
   );
 }

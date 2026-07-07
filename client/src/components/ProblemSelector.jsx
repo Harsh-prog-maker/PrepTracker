@@ -8,6 +8,7 @@ function ProblemSelector({
   problems,
   fetchActivities,
   fetchStats,
+  fetchStreak,
 }) {
   const [selectedProblem, setSelectedProblem] = useState(null);
 
@@ -26,7 +27,7 @@ function ProblemSelector({
 
       await fetchActivities();
       await fetchStats();
-
+      await fetchStreak();
       toast.success("Problem added successfully!");
 
       setSelectedProblem(null);
